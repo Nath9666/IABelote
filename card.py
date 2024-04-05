@@ -8,13 +8,14 @@ class Carte:
         self.rotationY = 0
         self.valeur = valeur
         self.couleur = couleur
+        self.owner = None
         self.font = pygame.font.Font(None, 36)
         self.point = self.get_point()
 
     def to_string(self):
         return self.valeur + " de " + self.couleur
     
-    def afficher(self, ecran):
+    def dessiner_carte(self, ecran):
         # Créer un rectangle
         rect = pygame.Surface((100, 200))
         rect.fill((255, 255, 255))
