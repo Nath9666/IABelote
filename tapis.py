@@ -12,7 +12,6 @@ class Tapis:
         for __, card in enumerate(self.cards):
             card.x = screen.get_width() / 2
             card.y = screen.get_height() / 2
-            #card.rotationX = 0
             card.dessiner_carte(screen)
 
     def get_points(self):

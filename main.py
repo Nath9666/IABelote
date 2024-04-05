@@ -44,7 +44,7 @@ horloge = pygame.time.Clock()
 while game:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            for card in tapis:
+            for card in tapis.cards:
                 print(card.to_string())
             game = False
         elif event.type == pygame.KEYDOWN:
