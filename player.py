@@ -1,26 +1,51 @@
 import pygame
 import math
 class Player:
-    def __init__(self, name):
+    def __init__(self, name:str):
+        """! Constructeur de la classe Player
+        
+        @param name: Le nom du joueur
+        
+        @return une instance de la classe Player
+        """
         self.name = name
         self.donneur = False
         self.hand = []
 
-    def receive_card(self, card):
+    def receive_card(self, card:object):
+        """! Méthode pour recevoir une carte
+        
+        @param card: La carte à recevoir
+        
+        @return la carte reçue
+        """
         self.hand.append(card)
         self.hand[len(self.hand)-1].owner = self
 
     def to_string(self):
+        """! Méthode pour afficher les cartes du joueur
+        
+        @return une chaine de caractère contenant les cartes du joueur
+        """
         print("Player: " + self.name)
         for card in self.hand:
             print(card.to_string())
 
-    def play_card(self, index):
+    def play_card(self, index:int):
         if index >= len(self.hand):
             return None
         return self.hand.pop(index)
     
-    def dessiner_player(self, screen, centre_x, centre_y, angle):
+    def dessiner_player(self, screen:pygame.Surface, centre_x:float, centre_y:float, angle:float):
+        """! Méthode pour dessiner un joueur
+        
+        @param screen: L'écran sur lequel dessiner le joueur
+        @param centre_x: La position x du centre du joueur
+        @param centre_y: La position y du centre du joueur
+        @param angle: L'angle de rotation du joueur
+        
+        @return un joueur dessiné sur l'écran
+        """
         # Carrer de 10*10
         pygame.draw.rect(screen, (255, 255, 255), (centre_x - 5, centre_y - 5, 10, 10))
 
@@ -57,6 +82,9 @@ class Player:
         nb_cartes = len(self.hand)
         total_largeur = largeur_carte * nb_cartes
 
+        # Dessine le nom
+        font = pygame.font.Font(None, 36)
+
         for i, card in enumerate(self.hand):
             if angle == 90 or angle == 270:
                 card.x = joueur_x + 200
@@ -73,8 +101,7 @@ class Player:
             card.rotationX = angle
             card.dessiner_carte(screen)
 
-        # Dessine le nom
-            font = pygame.font.Font(None, 36)
+        
         if self.donneur:
             # Dessine son nom
             text = font.render(self.name, 1, (255, 0, 0))

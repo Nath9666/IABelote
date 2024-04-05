@@ -1,0 +1,112 @@
+\doxysection{player.\+Player Class Reference}
+\hypertarget{classplayer_1_1_player}{}\label{classplayer_1_1_player}\index{player.Player@{player.Player}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classplayer_1_1_player_a464dce1678ada9090a815a5a93901d64}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, str name)
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe Player. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classplayer_1_1_player_ab58c14306c3800a14130ca3d5d066c71}{receive\+\_\+card}} (self, object card)
+\begin{DoxyCompactList}\small\item\em Méthode pour recevoir une carte. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classplayer_1_1_player_a7af350abfe0612b144476008f767e72a}{to\+\_\+string}} (self)
+\begin{DoxyCompactList}\small\item\em Méthode pour afficher les cartes du joueur. \end{DoxyCompactList}\item 
+\Hypertarget{classplayer_1_1_player_ad07d87583bdcad78b8fea71096e94243}\label{classplayer_1_1_player_ad07d87583bdcad78b8fea71096e94243} 
+{\bfseries play\+\_\+card} (self, int index)
+\item 
+\mbox{\hyperlink{classplayer_1_1_player_a423ad9c5ddda255f72333c9e993eaff0}{dessiner\+\_\+player}} (self, pygame.\+Surface screen, float centre\+\_\+x, float centre\+\_\+y, float angle)
+\begin{DoxyCompactList}\small\item\em Méthode pour dessiner un joueur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classplayer_1_1_player_ab2daaa8e6d26dd7174af789d9f3cab8d}\label{classplayer_1_1_player_ab2daaa8e6d26dd7174af789d9f3cab8d} 
+{\bfseries name}
+\item 
+\Hypertarget{classplayer_1_1_player_a852652934247d38e4dfd6b24f1446104}\label{classplayer_1_1_player_a852652934247d38e4dfd6b24f1446104} 
+{\bfseries donneur}
+\item 
+\Hypertarget{classplayer_1_1_player_a8e41a6d0a04ddaa560e098792bf6ed17}\label{classplayer_1_1_player_a8e41a6d0a04ddaa560e098792bf6ed17} 
+{\bfseries hand}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classplayer_1_1_player_a464dce1678ada9090a815a5a93901d64}\label{classplayer_1_1_player_a464dce1678ada9090a815a5a93901d64} 
+\index{player.Player@{player.Player}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!player.Player@{player.Player}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily player.\+Player.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{str}]{name }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe Player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Le nom du joueur\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+une instance de la classe Player 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classplayer_1_1_player_a423ad9c5ddda255f72333c9e993eaff0}\label{classplayer_1_1_player_a423ad9c5ddda255f72333c9e993eaff0} 
+\index{player.Player@{player.Player}!dessiner\_player@{dessiner\_player}}
+\index{dessiner\_player@{dessiner\_player}!player.Player@{player.Player}}
+\doxysubsubsection{\texorpdfstring{dessiner\_player()}{dessiner\_player()}}
+{\footnotesize\ttfamily player.\+Player.\+dessiner\+\_\+player (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{pygame.\+Surface}]{screen,  }\item[{float}]{centre\+\_\+x,  }\item[{float}]{centre\+\_\+y,  }\item[{float}]{angle }\end{DoxyParamCaption})}
+
+
+
+Méthode pour dessiner un joueur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen} & L\textquotesingle{}écran sur lequel dessiner le joueur \\
+\hline
+{\em centre\+\_\+x} & La position x du centre du joueur \\
+\hline
+{\em centre\+\_\+y} & La position y du centre du joueur \\
+\hline
+{\em angle} & L\textquotesingle{}angle de rotation du joueur\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+un joueur dessiné sur l\textquotesingle{}écran 
+\end{DoxyReturn}
+\Hypertarget{classplayer_1_1_player_ab58c14306c3800a14130ca3d5d066c71}\label{classplayer_1_1_player_ab58c14306c3800a14130ca3d5d066c71} 
+\index{player.Player@{player.Player}!receive\_card@{receive\_card}}
+\index{receive\_card@{receive\_card}!player.Player@{player.Player}}
+\doxysubsubsection{\texorpdfstring{receive\_card()}{receive\_card()}}
+{\footnotesize\ttfamily player.\+Player.\+receive\+\_\+card (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{object}]{card }\end{DoxyParamCaption})}
+
+
+
+Méthode pour recevoir une carte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em card} & La carte à recevoir\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+la carte reçue 
+\end{DoxyReturn}
+\Hypertarget{classplayer_1_1_player_a7af350abfe0612b144476008f767e72a}\label{classplayer_1_1_player_a7af350abfe0612b144476008f767e72a} 
+\index{player.Player@{player.Player}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!player.Player@{player.Player}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily player.\+Player.\+to\+\_\+string (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Méthode pour afficher les cartes du joueur. 
+
+\begin{DoxyReturn}{Returns}
+une chaine de caractère contenant les cartes du joueur 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+player.\+py\end{DoxyCompactItemize}

@@ -1,0 +1,162 @@
+\doxysection{card.\+Carte Class Reference}
+\hypertarget{classcard_1_1_carte}{}\label{classcard_1_1_carte}\index{card.Carte@{card.Carte}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcard_1_1_carte_aed46f7865961639d8c397b05f717eb9c}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, str valeur, str couleur)
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe Carte. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcard_1_1_carte_a38d0ab4b8369b9b832ed857234bb35fe}{to\+\_\+string}} (self)
+\begin{DoxyCompactList}\small\item\em Méthode pour afficher la carte. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcard_1_1_carte_a24bca0e103b05e1c5927b46a83e8b9fe}{dessiner\+\_\+carte}} (self, pygame.\+Surface ecran)
+\begin{DoxyCompactList}\small\item\em Méthode pour dessiner une carte. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcard_1_1_carte_a38c32278049f04848fd56e05d98b462f}{bouger}} (self, float x, float y)
+\begin{DoxyCompactList}\small\item\em Méthode pour bouger une carte. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcard_1_1_carte_ab2375554faa920b04fe97439761308d3}{tourner}} (self, float x, float y)
+\begin{DoxyCompactList}\small\item\em Méthode pour tourner une carte. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcard_1_1_carte_ae398cdb4dec7311c5de16b488fdae159}{get\+\_\+point}} (self)
+\begin{DoxyCompactList}\small\item\em Méthode pour obtenir le point d\textquotesingle{}une carte. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classcard_1_1_carte_a869d4d626decebbffdc81c0c2cb84ad4}\label{classcard_1_1_carte_a869d4d626decebbffdc81c0c2cb84ad4} 
+{\bfseries x}
+\item 
+\Hypertarget{classcard_1_1_carte_a72e09c9bdef3ed406f3acd13b2454266}\label{classcard_1_1_carte_a72e09c9bdef3ed406f3acd13b2454266} 
+{\bfseries y}
+\item 
+\Hypertarget{classcard_1_1_carte_aaff5faf5e1bda9bb42193bd0445f18c6}\label{classcard_1_1_carte_aaff5faf5e1bda9bb42193bd0445f18c6} 
+{\bfseries rotationX}
+\item 
+\Hypertarget{classcard_1_1_carte_a64b7de4f8b27e4dc1b70c5fb3377dcfa}\label{classcard_1_1_carte_a64b7de4f8b27e4dc1b70c5fb3377dcfa} 
+{\bfseries rotationY}
+\item 
+\Hypertarget{classcard_1_1_carte_a5de67555f18f66f9fa16465e9e5a9f33}\label{classcard_1_1_carte_a5de67555f18f66f9fa16465e9e5a9f33} 
+{\bfseries valeur}
+\item 
+\Hypertarget{classcard_1_1_carte_aa1b621592c9624065c8805be9e1fb2bd}\label{classcard_1_1_carte_aa1b621592c9624065c8805be9e1fb2bd} 
+{\bfseries couleur}
+\item 
+\Hypertarget{classcard_1_1_carte_ab900185445c3fce09d9c0a0121748294}\label{classcard_1_1_carte_ab900185445c3fce09d9c0a0121748294} 
+{\bfseries owner}
+\item 
+\Hypertarget{classcard_1_1_carte_a2e751316263ad53da781f20490d715db}\label{classcard_1_1_carte_a2e751316263ad53da781f20490d715db} 
+{\bfseries font}
+\item 
+\Hypertarget{classcard_1_1_carte_aa92af775e1df6c3c56989d50dc33dc7e}\label{classcard_1_1_carte_aa92af775e1df6c3c56989d50dc33dc7e} 
+{\bfseries point}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classcard_1_1_carte_aed46f7865961639d8c397b05f717eb9c}\label{classcard_1_1_carte_aed46f7865961639d8c397b05f717eb9c} 
+\index{card.Carte@{card.Carte}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!card.Carte@{card.Carte}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily card.\+Carte.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{str}]{valeur,  }\item[{str}]{couleur }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe Carte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em valeur} & La valeur de la carte \\
+\hline
+{\em couleur} & La couleur de la carte\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+une instance de la classe Carte 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcard_1_1_carte_a38c32278049f04848fd56e05d98b462f}\label{classcard_1_1_carte_a38c32278049f04848fd56e05d98b462f} 
+\index{card.Carte@{card.Carte}!bouger@{bouger}}
+\index{bouger@{bouger}!card.Carte@{card.Carte}}
+\doxysubsubsection{\texorpdfstring{bouger()}{bouger()}}
+{\footnotesize\ttfamily card.\+Carte.\+bouger (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+
+
+Méthode pour bouger une carte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & La valeur de déplacement en x \\
+\hline
+{\em y} & La valeur de déplacement en y\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+une carte déplacée 
+\end{DoxyReturn}
+\Hypertarget{classcard_1_1_carte_a24bca0e103b05e1c5927b46a83e8b9fe}\label{classcard_1_1_carte_a24bca0e103b05e1c5927b46a83e8b9fe} 
+\index{card.Carte@{card.Carte}!dessiner\_carte@{dessiner\_carte}}
+\index{dessiner\_carte@{dessiner\_carte}!card.Carte@{card.Carte}}
+\doxysubsubsection{\texorpdfstring{dessiner\_carte()}{dessiner\_carte()}}
+{\footnotesize\ttfamily card.\+Carte.\+dessiner\+\_\+carte (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{pygame.\+Surface}]{ecran }\end{DoxyParamCaption})}
+
+
+
+Méthode pour dessiner une carte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ecran} & L\textquotesingle{}écran sur lequel dessiner la carte\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+une carte dessinée sur l\textquotesingle{}écran 
+\end{DoxyReturn}
+\Hypertarget{classcard_1_1_carte_ae398cdb4dec7311c5de16b488fdae159}\label{classcard_1_1_carte_ae398cdb4dec7311c5de16b488fdae159} 
+\index{card.Carte@{card.Carte}!get\_point@{get\_point}}
+\index{get\_point@{get\_point}!card.Carte@{card.Carte}}
+\doxysubsubsection{\texorpdfstring{get\_point()}{get\_point()}}
+{\footnotesize\ttfamily card.\+Carte.\+get\+\_\+point (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Méthode pour obtenir le point d\textquotesingle{}une carte. 
+
+\begin{DoxyReturn}{Returns}
+le point de la carte 
+\end{DoxyReturn}
+\Hypertarget{classcard_1_1_carte_a38d0ab4b8369b9b832ed857234bb35fe}\label{classcard_1_1_carte_a38d0ab4b8369b9b832ed857234bb35fe} 
+\index{card.Carte@{card.Carte}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!card.Carte@{card.Carte}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily card.\+Carte.\+to\+\_\+string (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Méthode pour afficher la carte. 
+
+\begin{DoxyReturn}{Returns}
+une chaine de caractère contenant la valeur et la couleur de la carte 
+\end{DoxyReturn}
+\Hypertarget{classcard_1_1_carte_ab2375554faa920b04fe97439761308d3}\label{classcard_1_1_carte_ab2375554faa920b04fe97439761308d3} 
+\index{card.Carte@{card.Carte}!tourner@{tourner}}
+\index{tourner@{tourner}!card.Carte@{card.Carte}}
+\doxysubsubsection{\texorpdfstring{tourner()}{tourner()}}
+{\footnotesize\ttfamily card.\+Carte.\+tourner (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+
+
+Méthode pour tourner une carte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & La valeur de rotation en x \\
+\hline
+{\em y} & La valeur de rotation en y\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+une carte tournée 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+card.\+py\end{DoxyCompactItemize}

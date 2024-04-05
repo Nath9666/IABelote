@@ -41,14 +41,13 @@ tapis = tp.Tapis()
 # Créer un objet horloge
 horloge = pygame.time.Clock()
 
+# [ ]: mettre en place le systeme de tour de pris
 while game:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            for card in tapis.cards:
-                print(card.to_string())
             game = False
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_1:
+            if event.key == pygame.K_1 or event.key == pygame.K_KP1:
                 tapis.add_card(curent_player.play_card(0))
                 print("Player 1" + str(tapis.get_points()))
                 index_player += 1
