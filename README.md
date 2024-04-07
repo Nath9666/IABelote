@@ -32,3 +32,7 @@ Dans un premier temps, nous avons recrée le jeu de la belote en python.
 les fichiers `card.py` et `deck.py` permettent de créer les cartes et le paquet de cartes.
 
 Quand on fichier `player.py` permet de créer un joueur.
+
+## IA 
+
+Noous nous sommes basée sur cette video [IA play mario](https://youtu.be/2eeYqJ0uBKE)
