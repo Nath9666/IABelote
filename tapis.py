@@ -9,6 +9,7 @@ class Tapis:
         @return une instance de la classe Tapis
         """
         self.cards = []
+        self.previous_card = None
         self.team1 = 0
         self.team2 = 0
         self.font = pygame.font.Font(None, 36)
@@ -27,14 +28,29 @@ class Tapis:
         
         @return un tapis dessiné sur l'écran
         """
+        center_x = screen.get_width() / 2
+        center_y = screen.get_height() / 2
+        rayon = screen.get_height() / 2 - 250
+        pygame.draw.circle(screen, c.WHITE, (int(center_x), int(center_y)), rayon, 1)
         if len(self.cards) == 0:
             return
-        if len(self.cards) ==4:
+        if len(self.cards) == 4:
             self.point_toTeam()
+            self.previous_card = self.cards.copy()
             self.cards.clear()
         for __, card in enumerate(self.cards):
-            card.x = screen.get_width() / 2
-            card.y = screen.get_height() / 2
+            if card.rotationX == 0:
+                card.x = center_x
+                card.y = center_y + rayon
+            if card.rotationX == 90:
+                card.x = center_x + rayon
+                card.y = center_y
+            if card.rotationX == 180:
+                card.x = center_x
+                card.y = center_y - rayon - card.height
+            if card.rotationX == 270:
+                card.x = center_x - rayon
+                card.y = center_y
             card.dessiner_carte(screen)
 
     def draw_team_point(self, screen:pygame.Surface):
