@@ -1,30 +1,21 @@
+from nes_py.wrappers import JoypadSpace
 import gym_super_mario_bros
+from gym_super_mario_bros.actions import SIMPLE_MOVEMENT
 
-# Créer l'environnement Mario
-env = gym_super_mario_bros.make("SuperMarioBros-1-1-v0")
+env = gym_super_mario_bros.make('SuperMarioBros-v0')
+env = JoypadSpace(env, SIMPLE_MOVEMENT)
 
-# Boucle d'entraînement
-for episode in range(10):
-    state = env.reset()  # Réinitialiser l'environnement
-    done = False  # Indicateur de fin d'épisode
-
-    while not done:
-        action = env.action_space.sample()  # Sélectionner une action aléatoire
-        next_state, reward, done, info = env.step(action)  # Effectuer l'action dans l'environnement
-
-        # Mettre à jour l'IA avec l'état actuel, l'action, la récompense et l'état suivant
-
-        state = next_state  # Mettre à jour l'état actuel
-
-    # Mettre à jour les paramètres de l'IA après chaque épisode
-
-# Tester l'IA entraînée
-state = env.reset()
-done = False
-
-while not done:
-    action = env.action_space.sample()
-    state, reward, done, info = env.step(action)
+# Create a flag - restart or not
+done = True
+# Loop through each frame in the game
+for step in range(100000): 
+    # Start the game to begin with 
+    if done: 
+        # Start the gamee
+        env.reset()
+    # Do random actions
+    state, reward, done, info = env.step(env.action_space.sample())
+    # Show the game on the screen
     env.render()
-
+# Close the game
 env.close()
