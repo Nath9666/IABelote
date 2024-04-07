@@ -80,10 +80,11 @@ class Player:
         text_y = centre_y + math.sin(angle_rad) * (rayon - cercle2)
 
         # Dessine les cartes
-        largeur_carte = self.hand[0].width
-        longeur_carte = self.hand[0].height
-        nb_cartes = len(self.hand)
-        total_largeur = largeur_carte * nb_cartes
+        if self.hand:  # Ajoutez cette ligne pour vérifier si la main du joueur n'est pas vide
+            largeur_carte = self.hand[0].width
+            longeur_carte = self.hand[0].height
+            nb_cartes = len(self.hand)
+            total_largeur = largeur_carte * nb_cartes
 
         # Dessine le nom
         font = pygame.font.Font(None, 36)

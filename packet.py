@@ -11,6 +11,7 @@ class Paquet:
         self.cartes = []
         self.valeurs = ["A","7", "8", "9", "10", "V", "D", "R"]
         self.couleurs = ["Coeur", "Carreau", "Trefle", "Pique"]
+        self.atout = None
         self.creer_paquet(screen_dimension)
 
     def creer_paquet(self, screen_dimension:tuple):
@@ -43,3 +44,15 @@ class Paquet:
         """
         for carte in self.cartes:
             print(carte.to_string())
+
+    def define_atout(self, atout:str):
+        """! Méthode pour définir l'atout
+        @param atout: L'atout
+        
+        @return l'atout
+        """
+        self.atout = atout
+        for carte in self.cartes:
+            if carte.couleur == atout:
+                carte.atout = True
+        return self.atout

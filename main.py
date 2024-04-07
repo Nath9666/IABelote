@@ -25,6 +25,7 @@ game = True
 # Create a deck
 deck = p.Paquet(dimension)
 deck.melanger()
+deck.define_atout("Carreau")
 
 # Create players
 List_players = []
@@ -107,6 +108,7 @@ while game:
 
     # Dessiner le tapis
     tapis.draw_tapis(screen)
+    tapis.draw_team_point(screen)
 
     pygame.display.flip()
 

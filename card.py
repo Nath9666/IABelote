@@ -19,6 +19,7 @@ class Carte:
         self.valeur = valeur
         self.couleur = couleur
         self.owner = None
+        self.atout = False
         self.font = pygame.font.Font(None, int(36*screen_dimension[0]/1080))
         self.height = 200*screen_dimension[1]/1080
         self.width = 100*screen_dimension[0]/1080
@@ -73,6 +74,19 @@ class Carte:
 
         @return le point de la carte
         """
+        if self.atout:
+            points = {
+                "A": 11,
+                "7": 0,
+                "8": 0,
+                "9": 14,
+                "10": 10,
+                "V": 20,
+                "D": 3,
+                "R": 4
+            }
+            return points.get(self.valeur, 0)
+        
         points = {
             "A": 11,
             "7": 0,
