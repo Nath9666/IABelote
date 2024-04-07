@@ -1,11 +1,13 @@
 import pygame
+import color as c
 
 class Carte:
-    def __init__(self, valeur:str, couleur:str):
+    def __init__(self, valeur:str, couleur:str, screen_dimension:tuple):
         """! Constructeur de la classe Carte
 
         @param valeur: La valeur de la carte
         @param couleur: La couleur de la carte
+        @param screen_dimension: Les dimensions de l'écran
 
         @return une instance de la classe Carte
         
@@ -17,7 +19,9 @@ class Carte:
         self.valeur = valeur
         self.couleur = couleur
         self.owner = None
-        self.font = pygame.font.Font(None, 36)
+        self.font = pygame.font.Font(None, int(36*screen_dimension[0]/1080))
+        self.height = 200*screen_dimension[1]/1080
+        self.width = 100*screen_dimension[0]/1080
         self.point = self.get_point()
 
     def to_string(self):
@@ -26,9 +30,8 @@ class Carte:
         @return une chaine de caractère contenant la valeur et la couleur de la carte
             
         """
-        return self.valeur + " de " + self.couleur
+        return f"{self.valeur} de {self.couleur}"
     
-    # [ ]: faire les image de carte
     def dessiner_carte(self, ecran:pygame.Surface):
         """! Méthode pour dessiner une carte
         
@@ -36,27 +39,11 @@ class Carte:
 
         @return une carte dessinée sur l'écran
         """
-        # Créer un rectangle
-        rect = pygame.Surface((100, 200))
-    
-        # Changer la couleur en fonction de la couleur de la carte
-        if self.couleur in ["Carreau", "Coeur"]:
-            rect.fill((255, 0, 0))  # Rouge
-        else:
-            rect.fill((255, 255, 255))  # Blanc
-    
-        # Créer une surface avec la valeur
-        valeur_surface = self.font.render(self.valeur, True, (0, 0, 0))
-        rect.blit(valeur_surface, (10, 10))
-    
-        # Créer une surface avec la couleur
-        couleur_surface = self.font.render(self.couleur, True, (0, 0, 0))
-        rect.blit(couleur_surface, (10, 50))
-    
-        # Appliquer la rotation
+        rect = pygame.Surface((self.width, self.height))
+        rect.fill(c.RED if self.couleur in ["Carreau", "Coeur"] else c.WHITE)
+        rect.blit(self.font.render(self.valeur, True, c.BLACK), (10, 10))
+        rect.blit(self.font.render(self.couleur, True, c.BLACK), (10, 50))
         rect = pygame.transform.rotate(rect, self.rotationX)
-    
-        # Dessiner le rectangle sur l'écran
         ecran.blit(rect, (self.x, self.y))
 
     def bouger(self, x:float, y:float):
@@ -86,20 +73,14 @@ class Carte:
 
         @return le point de la carte
         """
-        if self.valeur == "A":
-            self.point = 11
-        elif self.valeur == "7":
-            self.point = 0
-        elif self.valeur == "8":
-            self.point = 0
-        elif self.valeur == "9":
-            self.point = 0
-        elif self.valeur == "10":
-            self.point = 10
-        elif self.valeur == "V":
-            self.point = 2
-        elif self.valeur == "D":
-            self.point = 3
-        elif self.valeur == "R":
-            self.point = 4
-        return self.point
+        points = {
+            "A": 11,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "10": 10,
+            "V": 2,
+            "D": 3,
+            "R": 4
+        }
+        return points.get(self.valeur, 0)

@@ -1,5 +1,6 @@
 import pygame
 import math
+import color as c
 class Player:
     def __init__(self, name:str):
         """! Constructeur de la classe Player
@@ -10,6 +11,7 @@ class Player:
         """
         self.name = name
         self.donneur = False
+        self.point_InHand = 0
         self.hand = []
 
     def receive_card(self, card:object):
@@ -20,6 +22,7 @@ class Player:
         @return la carte reçue
         """
         self.hand.append(card)
+        self.point_InHand += card.point
         self.hand[len(self.hand)-1].owner = self
 
     def to_string(self):
@@ -47,10 +50,10 @@ class Player:
         @return un joueur dessiné sur l'écran
         """
         # Carrer de 10*10
-        pygame.draw.rect(screen, (255, 255, 255), (centre_x - 5, centre_y - 5, 10, 10))
+        pygame.draw.rect(screen, c.WHITE, (centre_x - 5, centre_y - 5, 10, 10))
 
-        cercle1 = 200
-        cercle2 = 50
+        cercle1 = 200 * screen.get_width() / 1080
+        cercle2 = 50 * screen.get_width() / 1080
 
         # Definit la donné du rayon du cercle
         if screen.get_width() > screen.get_height():
@@ -59,8 +62,8 @@ class Player:
             rayon = screen.get_width() / 2 - cercle1
 
         # Dessine un cercle de 100 de rayon
-        pygame.draw.circle(screen, (255, 255, 255), (int(centre_x), int(centre_y)), rayon, 1)
-        pygame.draw.circle(screen, (255, 255, 255), (int(centre_x), int(centre_y)), rayon-cercle2,1)
+        pygame.draw.circle(screen, c.WHITE, (int(centre_x), int(centre_y)), rayon, 1)
+        pygame.draw.circle(screen, c.WHITE, (int(centre_x), int(centre_y)), rayon-cercle2,1)
 
         # Convertir l'angle en radians
         if angle == 90 or angle == 270:
@@ -77,8 +80,8 @@ class Player:
         text_y = centre_y + math.sin(angle_rad) * (rayon - cercle2)
 
         # Dessine les cartes
-        largeur_carte = 100
-        longeur_carte = 200
+        largeur_carte = self.hand[0].width
+        longeur_carte = self.hand[0].height
         nb_cartes = len(self.hand)
         total_largeur = largeur_carte * nb_cartes
 
@@ -87,7 +90,7 @@ class Player:
 
         for i, card in enumerate(self.hand):
             if angle == 90 or angle == 270:
-                card.x = joueur_x + 200
+                card.x = joueur_x + card.height
                 card.y = joueur_y - total_largeur/2 + i * largeur_carte
                 if angle == 90:
                     card.x = card.x - longeur_carte
@@ -104,9 +107,9 @@ class Player:
         
         if self.donneur:
             # Dessine son nom
-            text = font.render(self.name, 1, (255, 0, 0))
+            text = font.render(self.name, 1, c.RED)
         else:
-            text = font.render(self.name, 1, (255, 255, 255))
+            text = font.render(self.name, 1, c.WHITE)
         text = pygame.transform.rotate(text, angle)
         text_rect = text.get_rect(center=(text_x, text_y))
         screen.blit(text, text_rect)

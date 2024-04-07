@@ -2,24 +2,26 @@ import random
 import card as c
 
 class Paquet:
-    def __init__(self):
+    def __init__(self, screen_dimension:tuple):
         """! Constructeur de la classe Paquet
+        @param screen_dimension: Les dimensions de l'écran
         
         @return une instance de la classe Paquet
         """
         self.cartes = []
         self.valeurs = ["A","7", "8", "9", "10", "V", "D", "R"]
         self.couleurs = ["Coeur", "Carreau", "Trefle", "Pique"]
-        self.creer_paquet()
+        self.creer_paquet(screen_dimension)
 
-    def creer_paquet(self):
+    def creer_paquet(self, screen_dimension:tuple):
         """! Méthode pour créer un paquet de cartes
+        @param screen_dimension: Les dimensions de l'écran
         
         @return un paquet de cartes
         """
         for couleur in self.couleurs:
             for valeur in self.valeurs:
-                self.cartes.append(c.Carte(valeur, couleur))
+                self.cartes.append(c.Carte(valeur, couleur, screen_dimension))
 
     def melanger(self):
         """! Méthode pour mélanger les cartes

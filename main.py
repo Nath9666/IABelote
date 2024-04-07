@@ -2,26 +2,28 @@ import pygame
 import packet as p
 import player as pl
 import tapis as tp
+import color as c
 
 # Initialize the game
 pygame.init()
 
+# Get screen info
+infoObject = pygame.display.Info()
+
+# Get screen size
+screen_width, screen_height = infoObject.current_w, infoObject.current_h
+
+print(f"Screen size: {screen_width}x{screen_height}")
+
 # Set up the screen
 pygame.display.set_caption("Jeu de belote")
-screen = pygame.display.set_mode((1080, 1080))
-dimension = [screen.get_width(), screen.get_height()]
-
-# Set up the colors
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BLUE = (0, 0, 255)
+screen = pygame.display.set_mode((screen_height-40, screen_height-40))
+dimension = (screen.get_width(), screen.get_height())
 
 game = True
 
 # Create a deck
-deck = p.Paquet()
+deck = p.Paquet(dimension)
 deck.melanger()
 
 # Create players
@@ -54,7 +56,7 @@ while game:
                 curent_player = List_players[index_player % 4]
 
     # Effacer l'écran
-    screen.fill((0, 0, 0))  # Remplit l'écran avec la couleur noire
+    screen.fill(c.BLACK)  # Remplit l'écran avec la couleur noire
 
     # Dessiner les joueurs
     for i, player in enumerate(List_players):
