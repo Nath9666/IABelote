@@ -14,10 +14,11 @@ infoObject = pygame.display.Info()
 screen_width, screen_height = infoObject.current_w, infoObject.current_h
 
 print(f"Screen size: {screen_width}x{screen_height}")
+ajust = 0.8
 
 # Set up the screen
 pygame.display.set_caption("Jeu de belote")
-screen = pygame.display.set_mode((screen_height-40, screen_height-40))
+screen = pygame.display.set_mode((screen_height*ajust, screen_height*ajust))
 dimension = (screen.get_width(), screen.get_height())
 
 game = True
