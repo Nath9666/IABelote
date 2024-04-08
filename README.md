@@ -23,7 +23,8 @@ Cela apporte une difficulté supplémentaire pour l'IA.
 Pour installer le projet, il suffit de cloner le dépôt git et d'installer les dépendances.
 
 ```bash
-
+pip install nes-py
+pip install gym-super-mario-bros
 ```
 
 ## Recréation du jeu
@@ -36,3 +37,5 @@ Quand on fichier `player.py` permet de créer un joueur.
 ## IA 
 
 Noous nous sommes basée sur cette video [IA play mario](https://youtu.be/2eeYqJ0uBKE)
+
+Avec en plus le code [IA marrio code](https://github.com/nicknochnack/MarioRL/blob/main/Mario%20Tutorial.ipynb)
