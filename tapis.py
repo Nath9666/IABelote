@@ -30,7 +30,7 @@ class Tapis:
         """
         center_x = screen.get_width() / 2
         center_y = screen.get_height() / 2
-        rayon = screen.get_height() / 2 - 250
+        rayon = screen.get_height() / 8
         pygame.draw.circle(screen, c.WHITE, (int(center_x), int(center_y)), rayon, 1)
         if len(self.cards) == 0:
             return

@@ -114,3 +114,20 @@ class Player:
         text = pygame.transform.rotate(text, angle)
         text_rect = text.get_rect(center=(text_x, text_y))
         screen.blit(text, text_rect)
+
+    def prendre_atout(self, screen:pygame.Surface, atout:str):
+        """! Méthode pour prendre l'atout
+        
+        @param screen: L'écran sur lequel afficher l'atout
+        @param atout: L'atout à prendre
+        """
+        font = pygame.font.Font(None, 36)
+        name = font.render(self.name, 1, c.WHITE)
+        text = font.render(f"Prendre l'atout {atout} ?", 1, c.WHITE)
+        text2 = font.render("Oui: O | Non: N", 1, c.WHITE)
+        text_rect = text.get_rect(center=(screen.get_width() / 2, screen.get_height() / 2))
+        text2_rect = text2.get_rect(center=(screen.get_width() / 2, screen.get_height() / 2 + 50))
+        name_rect = name.get_rect(center=(screen.get_width() / 2, screen.get_height() / 2 - 50))
+        screen.blit(text, text_rect)
+        screen.blit(text2, text2_rect)
+        screen.blit(name, name_rect)

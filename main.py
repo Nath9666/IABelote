@@ -41,6 +41,7 @@ curent_player = List_players[index_player]
 
 # Create tapis
 tapis = tp.Tapis()
+tapis.add_card(deck.tirer_carte())
 
 take_action = [
     "Carreau",
@@ -48,6 +49,8 @@ take_action = [
     "Pique",
     "Trefle"
     "Pass"
+    "O"
+    "N"
     "0",
     "1"
     "2",
@@ -76,10 +79,22 @@ button_toAction = {
     pygame.K_KP5: 5,
     pygame.K_KP6: 6,
     pygame.K_KP7: 7,
-}
+    pygame.K_o:"O",
+    pygame.K_n:"N",
+    pygame.K_c:"Carreau",
+    pygame.K_h:"Coeur",
+    pygame.K_p:"Pique",
+    pygame.K_t:"Trefle"}
 
 # Créer un objet horloge
 horloge = pygame.time.Clock()
+
+# Layer du jeu
+## 0: Menu
+## 1: Premier Tour
+## 2: Deuxieme Tour
+## 3: Le jeu
+layer = 1
 
 # Boucle de jeu
 while game:
@@ -88,10 +103,9 @@ while game:
             game = False
         elif event.type == pygame.KEYDOWN:
             # Vérifie si la touche pressée est dans le dictionnaire
-            if event.key in button_toAction:
+            if event.key in button_toAction and layer == 3:
                 # Récupère le numéro de la carte
                 card_number = button_toAction[event.key]
-
                 # Vérifie si le numéro de la carte est inférieur au nombre de cartes que le joueur a
                 if card_number < len(curent_player.hand):
                     # Joue la carte correspondante à la touche pressée
@@ -99,6 +113,38 @@ while game:
                     print(str(tapis.get_points()))
                     index_player += 1
                     curent_player = List_players[index_player % 4]
+            if event.key in button_toAction and layer == 1:
+                # Récupère l'action
+                action = button_toAction[event.key]
+                # Vérifie si l'action est un atout
+                if action in take_action[:4]:
+                    # Définir l'atout
+                    deck.define_atout(action)
+                    layer = 3
+                # Vérifie si l'action est un passe
+                elif action == "Pass":
+                    # Passe au joueur suivant
+                    index_player += 1
+                    curent_player = List_players[index_player % 4]
+                    # Vérifie si le donneur est le dernier joueur
+                    if index_player == 0:
+                        # Passe au deuxième tour
+                        layer = 2
+                # Vérifie si l'action est un O
+                elif action == "O":
+                    # Passe au joueur suivant
+                    index_player += 1
+                    curent_player = List_players[index_player % 4]
+                    deck.define_atout(tapis.cards[0].couleur)
+                    # Passe au deuxième tour
+                    layer = 2
+                # Vérifie si l'action est un N
+                elif action == "N":
+                    # Passe au joueur précédent
+                    index_player -= 1
+                    curent_player = List_players[index_player % 4]
+                    # Passe au deuxième tour
+                    layer = 2
 
     # Effacer l'écran
     screen.fill(c.BLACK)  # Remplit l'écran avec la couleur noire
@@ -107,9 +153,20 @@ while game:
     for i, player in enumerate(List_players):
         player.dessiner_player(screen, dimension[0]/2, dimension[1]/2, i*90)
 
-    # Dessiner le tapis
-    tapis.draw_tapis(screen)
-    tapis.draw_team_point(screen)
+    if layer == 0:
+        # Dessiner le menu
+        pass
+    elif layer == 1:
+        # Dessiner le premier tour
+        tapis.draw_tapis(screen)
+        curent_player.prendre_atout(screen, tapis.cards[0].couleur)        
+    elif layer == 2:
+        # Dessiner le deuxieme tour
+        pass
+    elif layer == 3:
+        # Dessiner le tapis
+        tapis.draw_tapis(screen)
+        tapis.draw_team_point(screen)
 
     pygame.display.flip()
 
