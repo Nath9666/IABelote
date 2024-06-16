@@ -7,7 +7,7 @@ Il pemert également d'explorer la programtions orientée objet mais aussi le fa
 
 A noter : Ce projet est un projet personnel et n'a pas pour but d'être utilisé en production.
 
-Il existe plusieurs versions de la belote, nous avons choisi de nous baser sur la belote avec une variantes concernant la vache folle.
+Il existe plusieurs versions de la belote, nous avons choisi de nous baser sur la belote avec une variante concernant la vache folle.
 
 ### Règles de la belote
 Pour faire le programme de l'IA, il est nécessaire de comprendre les règles de la belote. Voici un résumé des règles de la belote :
@@ -23,7 +23,7 @@ Cela apporte une difficulté supplémentaire pour l'IA.
 Pour installer le projet, il suffit de cloner le dépôt git et d'installer les dépendances.
 
 ```bash
-
+pip install -r requirements.txt
 ```
 
 ## Recréation du jeu
@@ -35,4 +35,7 @@ Quand on fichier `player.py` permet de créer un joueur.
 
 ## IA 
 
-Noous nous sommes basée sur cette video [IA play mario](https://youtu.be/2eeYqJ0uBKE)
+Nous nous sommes basée sur cette video [IA play mario](https://youtu.be/2eeYqJ0uBKE)
+Aisi que des recherches sur le Q-learning.
+[Simple IA](https://youtu.be/EvV5Qtp_fYg)
+[make own environnement](https://www.gymlibrary.dev/content/environment_creation/)
