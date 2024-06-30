@@ -5,6 +5,10 @@
 L'objectif est de faciliter la detection de feuille de marquage de belote en utilisant des algorithmes de traitement d'image.
 
 [Aide](https://www.kaggle.com/code/basu369victor/kuzushiji-recognition-just-like-digit-recognition)
+- [Introduction to CNN Keras](https://www.kaggle.com/code/yassineghouzam/introduction-to-cnn-keras-0-997-top-6)
+- [MNIST - Deep Neural Network with Keras](https://www.kaggle.com/code/prashant111/mnist-deep-neural-network-with-keras)
+- [Offline Handwritten Text](https://www.kaggle.com/code/aman10kr/offline-handwritten-text-ocr)
+- [Deep Neural Network Keras way](https://www.kaggle.com/code/poonaml/deep-neural-network-keras-way/notebook)
 
 ## La feuille
 
