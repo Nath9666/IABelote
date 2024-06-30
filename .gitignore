@@ -1,3 +1,1 @@
-# elève le _pycache_ et les fichiers .pyc
-/_pycache_
-*.pyc
+.venv

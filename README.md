@@ -1,41 +1,29 @@
-# IA Belote
+# Projet pour la detection de feuille de marquage de belote
 
-## Description
+## Objectif
 
-Ce projet à pour but de faire apprendre à une IA à jouer à la belote. Pour cela, nous avons utilisé un algorithme de renforcement, le Q-learning.
-Il pemert également d'explorer la programtions orientée objet mais aussi le fait de develloper une IA basée sur le Q-learning.
+L'objectif est de faciliter la detection de feuille de marquage de belote en utilisant des algorithmes de traitement d'image.
 
-A noter : Ce projet est un projet personnel et n'a pas pour but d'être utilisé en production.
+## La feuille
 
-Il existe plusieurs versions de la belote, nous avons choisi de nous baser sur la belote avec une variantes concernant la vache folle.
+Dans un premier temps, nous decidons de quel type de feuille de marquage nous voulons.
 
-### Règles de la belote
-Pour faire le programme de l'IA, il est nécessaire de comprendre les règles de la belote. Voici un résumé des règles de la belote :
-[règles de la belote](https://www.ffbelote.org/regles-officielle-belote/)
+Voir le fichier [Feuille de marquage](Feuille_de_marquage.png) pour plus d'information.
 
-#### Règles de la vache folle
+## La detection
 
-Dans cette variantes, si personne n'as pris durant le deuxième tour de prises alors c'est le conneur qui prends.
-Cela apporte une difficulté supplémentaire pour l'IA.
+Pour la detection, nous utilisons des algorithmes de traitement d'image.
 
-## Installation
+### Detection de la feuille
 
-Pour installer le projet, il suffit de cloner le dépôt git et d'installer les dépendances.
+Pour la detection de la feuille, nous utilisons un algorithme de detection de contour, pour la detecter automatiquement.
 
-```bash
-pip install nes-py
-pip install gym-super-mario-bros
-```
+### Detection des points
 
-## Recréation du jeu
+Pour la detection des points, nous utilisons un algorithme de CNN afin de verfier si les points sont bien detectes.
 
-Dans un premier temps, nous avons recrée le jeu de la belote en python.
-les fichiers `card.py` et `deck.py` permettent de créer les cartes et le paquet de cartes.
+## L'application
 
-Quand on fichier `player.py` permet de créer un joueur.
+L'application est une application web(ou python) qui permet de detecter les feuilles de marquage de belote.
 
-## IA 
-
-Noous nous sommes basée sur cette video [IA play mario](https://youtu.be/2eeYqJ0uBKE)
-
-Avec en plus le code [IA marrio code](https://github.com/nicknochnack/MarioRL/blob/main/Mario%20Tutorial.ipynb)
+Elle est founir avec un [support externe](./externe/support.md) pour les utilisateurs et un [appareils photo](./externe/plan.png) pour la detection.
