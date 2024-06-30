@@ -4,11 +4,18 @@
 
 L'objectif est de faciliter la detection de feuille de marquage de belote en utilisant des algorithmes de traitement d'image.
 
+[Aide](https://www.kaggle.com/code/basu369victor/kuzushiji-recognition-just-like-digit-recognition)
+
 ## La feuille
 
 Dans un premier temps, nous decidons de quel type de feuille de marquage nous voulons.
 
-Voir le fichier [Feuille de marquage](Feuille_de_marquage.png) pour plus d'information.
+Voir les fichiers :
+
+- [Feuille de marquage PNG ](./externe/FeuilleMarquage.png)
+- [Feuille de marquage PDF ](./externe/FeuilleMarquage.pdf)
+- [Feuille de marquage XLSX](./externe/FeuilleMarquage.xlsx)
+- [Feuille de marquage CSV ](./externe/FeuilleMarquage.csv)
 
 ## La detection
 
