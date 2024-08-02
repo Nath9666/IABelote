@@ -26,15 +26,23 @@ def detect_digits(image_path):
             digits_rois.append((x, y, w, h, roi))
     return img, digits_rois
 
+def square(img, digits_roi):
+    for (x, y, w, h, _) in digits_roi:
+        cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
+    return img
+    
+
 def recognize_digits(img, digits_rois, model):
     digits = []
     for (x, y, w, h, roi) in digits_rois:
         roi = cv2.resize(roi, (28, 28), interpolation=cv2.INTER_AREA)
-        roi = roi.reshape(1, -1)
-        roi = MinMaxScaler().fit_transform(roi)
+        roi = roi / 255.0  # Normalisation simple
+        roi = roi.reshape(1, 28*28)  # Aplatir l'image pour correspondre à l'entrée du modèle
         digit = model.predict(roi)
-        digits.append((x, y, np.argmax(digit)))
-        cv2.putText(img, str(np.argmax(digit)), (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 2)
+        print(digit)
+        digit = digit[0]  # Obtenir la prédiction réelle à partir du résultat
+        digits.append((x, y, digit))
+        cv2.putText(img, str(digit), (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 2)
     cv2.imshow("Digits Recognized", img)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
@@ -42,17 +50,11 @@ def recognize_digits(img, digits_rois, model):
 
 if __name__ == '__main__':
 
-    model = joblib.load('./models/DetectionReconize_optimized.pkl')
+    model = joblib.load('./models/DetectionReconize_optimized2.pkl')
 
     image_path = './data/picture2.jpg'
     img, digits_rois = detect_digits(image_path)
-    digits = recognize_digits(img, digits_rois, model)
-    print(digits)
-
-    model = joblib.load('./models/DetectionReconize_optimized.pkl')
-
-    image_path = './data/picture2.jpg'
-    img, digits_rois = detect_digits(image_path)
+    img = square(img, digits_rois)
     digits = recognize_digits(img, digits_rois, model)
     print(digits)
 

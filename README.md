@@ -1,10 +1,12 @@
-# Projet pour la detection de feuille de marquage de belote
+# Projet pour la détection de feuille de marquage de belote
 
 ## Objectif
 
-L'objectif est de faciliter la detection de feuille de marquage de belote en utilisant des algorithmes de traitement d'image.
+L'objectif est de faciliter la détection de feuille de marquage de belote en utilisant des algorithmes de traitement d'image.
 
-[Aide](https://www.kaggle.com/code/basu369victor/kuzushiji-recognition-just-like-digit-recognition)
+## Liens utiles
+
+- [Aide](https://www.kaggle.com/code/basu369victor/kuzushiji-recognition-just-like-digit-recognition)
 - [Introduction to CNN Keras](https://www.kaggle.com/code/yassineghouzam/introduction-to-cnn-keras-0-997-top-6)
 - [MNIST - Deep Neural Network with Keras](https://www.kaggle.com/code/prashant111/mnist-deep-neural-network-with-keras)
 - [Offline Handwritten Text](https://www.kaggle.com/code/aman10kr/offline-handwritten-text-ocr)
@@ -12,31 +14,64 @@ L'objectif est de faciliter la detection de feuille de marquage de belote en uti
 
 ## La feuille
 
-Dans un premier temps, nous decidons de quel type de feuille de marquage nous voulons.
+Dans un premier temps, nous décidons de quel type de feuille de marquage nous voulons.
 
 Voir les fichiers :
 
-- [Feuille de marquage PNG ](./externe/FeuilleMarquage.png)
-- [Feuille de marquage PDF ](./externe/FeuilleMarquage.pdf)
+- [Feuille de marquage PNG](./externe/FeuilleMarquage.png)
+- [Feuille de marquage PDF](./externe/FeuilleMarquage.pdf)
 - [Feuille de marquage XLSX](./externe/FeuilleMarquage.xlsx)
-- [Feuille de marquage CSV ](./externe/FeuilleMarquage.csv)
+- [Feuille de marquage CSV](./externe/FeuilleMarquage.csv)
 
-## La detection
+## La détection
 
-Pour la detection, nous utilisons des algorithmes de traitement d'image.
+Pour la détection, nous utilisons des algorithmes de traitement d'image.
 
-### Detection de la feuille
+### Détection de la feuille
 
-Pour la detection de la feuille, nous utilisons un algorithme de detection de contour, pour la detecter automatiquement.
+Pour la détection de la feuille, nous utilisons un algorithme de détection de contour, pour la détecter automatiquement.
 
-Coupler a un algorithme de CNN, nous pouvons verifier si la feuille est bien detectee et dans le bon sens.
+Couplé à un algorithme de CNN, nous pouvons vérifier si la feuille est bien détectée et dans le bon sens.
 
-### Detection des points
+#### 1. `DETECTSHEET.PY`
 
-Pour la detection des points, nous utilisons un algorithme de CNN afin de verfier si les points sont correcte.
+Ce fichier contient le code pour détecter les contours d'une feuille de marquage dans une image ou une vidéo.
+
+##### Fonctionnalités :
+- Conversion de l'image en niveaux de gris.
+- Application d'un flou gaussien.
+- Détection des contours.
+- Dessin des contours détectés.
+- Sauvegarde des images avec contours détectés.
+
+### Détection des points
+
+Pour la détection des points, nous utilisons un algorithme de CNN afin de vérifier si les points sont corrects.
+
+### 1. `DETECTANDRECONIZEDIGITSMODEL.PY`
+
+Ce fichier contient le code pour entraîner un modèle de reconnaissance de chiffres en utilisant les données MNIST et un SVM optimisé.
+
+#### Fonctionnalités :
+- Chargement des données MNIST.
+- Prétraitement des images.
+- Entraînement d'un modèle SVM avec un pipeline de prétraitement.
+- Évaluation du modèle.
+- Sauvegarde du modèle entraîné.
+
+### 2. `DETECTANDRECONIZEDIGITS.PY`
+
+Ce fichier utilise le modèle entraîné pour détecter et reconnaître les chiffres dans une image donnée.
+
+#### Fonctionnalités :
+- Détection des chiffres dans une image.
+- Encadrement des chiffres détectés.
+- Reconnaissance des chiffres en utilisant le modèle SVM.
+- Affichage des résultats.
 
 ## L'application
 
-L'application est une application web(ou python) qui permet de detecter les feuilles de marquage de belote, Afin de calculer les points par joueurs et d'afficher un classement.
+L'application est une application web et C# (pour le front) et python pour le back qui permet de détecter les feuilles de marquage de belote, afin de calculer les points par joueurs et d'afficher un classement.
 
-Elle est founir avec un [support externe](./externe/support.md) pour les utilisateurs et un [appareils photo](./externe/plan.png) pour la detection.
+Elle est fournie avec un [support externe](./externe/support.md) pour les utilisateurs et un [appareil photo](./externe/plan.png) pour la détection.
+Vous les retrouver également sur le site [web](https://www.google.com).
