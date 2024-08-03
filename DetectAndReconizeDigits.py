@@ -11,6 +11,7 @@ import cv2
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.models import load_model
+import pandas as pd
 
 def detect_digits(image_path):
     img = cv2.imread(image_path)
@@ -38,8 +39,15 @@ def recognize_digits(img, digits_rois, model):
         roi = cv2.resize(roi, (28, 28), interpolation=cv2.INTER_AREA)
         roi = roi / 255.0  # Normalisation simple
         roi = roi.reshape(1, 28*28)  # Aplatir l'image pour correspondre à l'entrée du modèle
-        digit = model.predict(roi)
-        print(digit)
+
+        # Utiliser les noms de caractéristiques corrects
+        feature_names = [f'pixel{i}' for i in range(1, 28*28 + 1)]
+        roi_df = pd.DataFrame(roi, columns=feature_names)
+
+        digit = model.predict(roi_df)
+        probabilities = model.predict_proba(roi_df)
+        print(f"Digit: {digit[0]}, Probabilities: {probabilities}")
+
         digit = digit[0]  # Obtenir la prédiction réelle à partir du résultat
         digits.append((x, y, digit))
         cv2.putText(img, str(digit), (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 2)
@@ -52,7 +60,7 @@ if __name__ == '__main__':
 
     model = joblib.load('./models/DetectionReconize_optimized2.pkl')
 
-    image_path = './data/picture2.jpg'
+    image_path = './data/test_1013.png'
     img, digits_rois = detect_digits(image_path)
     img = square(img, digits_rois)
     digits = recognize_digits(img, digits_rois, model)
