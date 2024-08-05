@@ -1,0 +1,118 @@
+{
+  "trial_id": "4",
+  "hyperparameters": {
+    "space": [
+      {
+        "class_name": "Int",
+        "config": {
+          "name": "conv_1_filter",
+          "default": null,
+          "conditions": [],
+          "min_value": 32,
+          "max_value": 128,
+          "step": 16,
+          "sampling": "linear"
+        }
+      },
+      {
+        "class_name": "Choice",
+        "config": {
+          "name": "conv_1_kernel",
+          "default": 3,
+          "conditions": [],
+          "values": [3, 5],
+          "ordered": true
+        }
+      },
+      {
+        "class_name": "Int",
+        "config": {
+          "name": "conv_2_filter",
+          "default": null,
+          "conditions": [],
+          "min_value": 32,
+          "max_value": 128,
+          "step": 16,
+          "sampling": "linear"
+        }
+      },
+      {
+        "class_name": "Choice",
+        "config": {
+          "name": "conv_2_kernel",
+          "default": 3,
+          "conditions": [],
+          "values": [3, 5],
+          "ordered": true
+        }
+      },
+      {
+        "class_name": "Int",
+        "config": {
+          "name": "conv_3_filter",
+          "default": null,
+          "conditions": [],
+          "min_value": 32,
+          "max_value": 128,
+          "step": 16,
+          "sampling": "linear"
+        }
+      },
+      {
+        "class_name": "Choice",
+        "config": {
+          "name": "conv_3_kernel",
+          "default": 3,
+          "conditions": [],
+          "values": [3, 5],
+          "ordered": true
+        }
+      },
+      {
+        "class_name": "Int",
+        "config": {
+          "name": "dense_units",
+          "default": null,
+          "conditions": [],
+          "min_value": 32,
+          "max_value": 128,
+          "step": 16,
+          "sampling": "linear"
+        }
+      }
+    ],
+    "values": {
+      "conv_1_filter": 80,
+      "conv_1_kernel": 3,
+      "conv_2_filter": 80,
+      "conv_2_kernel": 3,
+      "conv_3_filter": 128,
+      "conv_3_kernel": 3,
+      "dense_units": 48
+    }
+  },
+  "metrics": {
+    "metrics": {
+      "accuracy": {
+        "direction": "max",
+        "observations": [{ "value": [0.9938444495201111], "step": 10 }]
+      },
+      "loss": {
+        "direction": "min",
+        "observations": [{ "value": [0.020811186792949837], "step": 10 }]
+      },
+      "val_accuracy": {
+        "direction": "max",
+        "observations": [{ "value": [0.9939333399136862], "step": 10 }]
+      },
+      "val_loss": {
+        "direction": "min",
+        "observations": [{ "value": [0.03573694390555223], "step": 10 }]
+      }
+    }
+  },
+  "score": 0.9939333399136862,
+  "best_step": 10,
+  "status": "COMPLETED",
+  "message": null
+}
