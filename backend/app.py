@@ -1,18 +1,20 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 from function import *
 import json
 
 app = Flask(__name__)
+CORS(app)  # Ajoutez cette ligne pour permettre les requêtes CORS
 
 @app.route('/')
 def home():
-    return "Hello, Flask!"
+    return jsonify("Hello, Flask!")
 
 @app.route('/reconize', methods=['GET', 'POST'])
 def reconize():
     if request.method == 'POST':
         data = request.json
-        return f"Received POST data: {data}", 200
+        return jsonify({"message": f"Received POST data: {data}"}), 200
     image_path = './data/1_.png'
     img, digits_rois = detect_digits(image_path)
     img = square(img, digits_rois)
@@ -22,7 +24,7 @@ def reconize():
     print(digits_Cnn)
 
     digits_Cnn_output = ''.join(map(str, digits_Cnn))
-    return digits_Cnn_output, 200
+    return jsonify({"digits": digits_Cnn_output}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
