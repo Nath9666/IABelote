@@ -10,12 +10,10 @@ CORS(app)  # Ajoutez cette ligne pour permettre les requêtes CORS
 def home():
     return jsonify("Hello, Flask!")
 
-@app.route('/reconize', methods=['GET', 'POST'])
+@app.route('/reconize', methods=['POST'])
 def reconize():
-    if request.method == 'POST':
-        data = request.json
-        return jsonify({"message": f"Received POST data: {data}"}), 200
-    image_path = './data/1_.png'
+    data = request.json
+    image_path = data.get('image_path', './data/1_.png')  # Utilisez le chemin de l'image fourni ou un chemin par défaut
     img, digits_rois = detect_digits(image_path)
     img = square(img, digits_rois)
     model_CNN = load_model('./models/DetectionReconize_CNN.h5')  # Utiliser load_model pour le modèle CNN
