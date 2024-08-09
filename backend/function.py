@@ -24,6 +24,8 @@ def square(img, digits_roi):
 
 def recognize_digits_cnn(img, digits_rois, model):
     digits = []
+    recognize = []
+    digits_probabilities = []
     for (x, y, w, h, roi) in digits_rois:
         roi = cv2.resize(roi, (28, 28), interpolation=cv2.INTER_AREA)
         roi = roi / 255.0  # Normalisation simple
@@ -36,9 +38,12 @@ def recognize_digits_cnn(img, digits_rois, model):
         # Afficher les résultats sans encodage
         #?print(f"Digit: {digit_class}, Probabilities: {probabilities}")
 
-        digits.append((x, y, digit_class, probabilities))
+        digits.append(digit_class)
+        recognize.append([x,y,w,h])
+        digits_probabilities.append(probabilities)
         cv2.putText(img, str(digit_class), (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 2)
-    cv2.imshow("Digits Recognized", img)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-    return digits
+        cv2.imwrite('./front/public/data/recognized.png', img)
+    # cv2.imshow("Digits Recognized", img)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
+    return digits, recognize, digits_probabilities
