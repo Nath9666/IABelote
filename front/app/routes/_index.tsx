@@ -138,7 +138,7 @@ export default function Index() {
               alt="Reconized"
               className="w-1/2 sd:w-full"
             />
-            <a href="/error-digits" className="bg-red-500 text-white p-2 rounded mt-2">
+            <a href="/errorDigits" className="bg-red-500 text-white p-2 rounded mt-2">
               Error
             </a>
           </article>

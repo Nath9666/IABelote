@@ -18,9 +18,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="h-screen flex flex-col">
         <Navbar />
-        {children}
+        <div className="flex-grow">{children}</div>
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -37,9 +37,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
 
 // Ajouter le composant CatchBoundary
 export function CatchBoundary() {
-  return (
-      <NotFound />
-  );
+  return <NotFound />;
 }
 
 export default function App() {
