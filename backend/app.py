@@ -9,7 +9,8 @@ import os
 app = Flask(__name__)
 CORS(app)  # Ajoutez cette ligne pour permettre les requêtes CORS
 
-UPLOAD_FOLDER = './front/public/data'
+UPLOAD_FOLDER_FRONT = './front/public/data'
+UPLOAD_FOLDER = './data' 
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
@@ -27,7 +28,9 @@ def upload_image():
         return jsonify({"error": "No selected file"}), 400
 
     file_path = os.path.join(UPLOAD_FOLDER, file.filename)
+    file_path_react = os.path.join(UPLOAD_FOLDER_FRONT, file.filename)
     file.save(file_path)
+    file.save(file_path_react)
     return jsonify({"message": "Image uploaded successfully", "file_path": file_path}), 200
 
 

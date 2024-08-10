@@ -9,6 +9,7 @@ export const meta: MetaFunction = () => {
 };
 
 const devBack = "http://127.0.0.1:5000";
+const chemin_visible = false;
 
 export default function Index() {
   const [data, setData] = useState(null);
@@ -34,8 +35,7 @@ export default function Index() {
     startVideo();
   }, []);
 
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
+  const handleSubmit = async (imagePath: string) => {
     try {
       const response = await fetch(devBack + "/reconize", {
         method: "POST",
@@ -53,6 +53,10 @@ export default function Index() {
     } catch (error) {
       console.error("Erreur lors de la récupération des données:", error);
     }
+  };
+
+  const clickButon = () => {
+    handleSubmit(imagePath);
   };
 
   const captureImage = () => {
@@ -79,7 +83,9 @@ export default function Index() {
 
               if (response.ok) {
                 console.log("Image uploaded successfully");
-                console.log(JSON.stringify(data, null, 2));
+                console.log(JSON.stringify(response));
+                setImagePath("./data/captured_image.png");
+                handleSubmit(imagePath);
               } else {
                 console.error("Failed to upload image");
               }
@@ -94,39 +100,45 @@ export default function Index() {
 
   return (
     <div className="font-sans p-4">
-      <h1 className="text-2xl font-bold">Bienvenue à Belote classement</h1>
-      <form onSubmit={handleSubmit} className="mt-4">
-        <p>Exemple : "./data/1_.png"</p>
-        <label className="block mb-2">
-          Chemin de l&apos;image:
-          <input
-            type="text"
-            value={imagePath}
-            onChange={(e) => setImagePath(e.target.value)}
-            className="border p-2 w-full"
-          />
-        </label>
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded">
-          Envoyer
-        </button>
-      </form>
+      {chemin_visible ? (
+        <>
+          <h1 className="text-2xl font-bold">Bienvenue à Belote classement</h1>
+          <div className="mt-4">
+            <p>Exemple : "./data/1_.png"</p>
+            <label className="block mb-2">
+              Chemin de l&apos;image:
+              <input
+                type="text"
+                value={imagePath}
+                onChange={(e) => setImagePath(e.target.value)}
+                className="border p-2 w-full"
+              />
+            </label>
+            <button
+              className="bg-blue-500 text-white p-2 rounded"
+              onClick={clickButon}
+            >
+              Envoyer
+            </button>
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
       {data ? (
         <>
           <article className="flex flex-wrap">
             <img
               src={`./public/data/original.png?timestamp=${timestamp}`}
-              alt="Image 1"
+              alt="Original"
               className="w-1/2 sd:w-full"
             />
             <img
               src={`./public/data/recognized.png?timestamp=${timestamp}`}
-              alt="Image 2"
+              alt="Reconized"
               className="w-1/2 sd:w-full"
             />
           </article>
-          <pre className="mt-4 p-4 bg-gray-100 rounded">
-            {JSON.stringify(data, null, 2)}
-          </pre>
         </>
       ) : (
         <p>Chargement des données...</p>
