@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import type { MetaFunction } from "@remix-run/node";
 
 export default function ErrorDigits() {
   return (
