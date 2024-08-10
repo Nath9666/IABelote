@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PlusCircleIcon } from "@heroicons/react/24/solid";
+import { PlusCircleIcon, MinusCircleIcon } from "@heroicons/react/24/solid";
 
 export default function Partie() {
   const [number, setNumber] = useState(0);
@@ -9,6 +9,10 @@ export default function Partie() {
 
   const handleIncrement = () => {
     setNumber(number + 1);
+  };
+
+  const handleDesincrement = () => {
+    setNumber(number - 1);
   };
 
   const handleParticipantChange = (
@@ -22,8 +26,11 @@ export default function Partie() {
   };
 
   const peopleInput = (index: number) => {
+
+    const backgroundColor = index % 2 === 0 ? 'bg-blue-100' : 'bg-white';
+
     return (
-      <div key={index} className="mb-4 flex flex-row gap-4">
+      <div key={index} className={`mb-4 flex flex-row gap-4 ${backgroundColor}`}>
         <div className="flex items-center justify-center w-1/10 h-16">
           {index}
         </div>
@@ -70,7 +77,7 @@ export default function Partie() {
       <div className="bg-white p-8 rounded shadow-md w-full">
         <h1 className="text-2xl font-bold mb-6 text-center">Nouveau Tournoi</h1>
         <form>
-          <div className="mb-4">
+          <div className="mb-4 hidden">
             <label
               htmlFor="participants"
               className="block text-gray-700 font-bold mb-2"
@@ -92,11 +99,19 @@ export default function Partie() {
             />
           </div>
           {Array.from({ length: number }, (_, index) => peopleInput(index))}
-          <div
-            className="flex items-center justify-center w-1/10 h-16 cursor-pointer hover:bg-blue-100"
-            onClick={handleIncrement}
-          >
-            <PlusCircleIcon className="h-6 w-6 text-blue-500" />
+          <div className="flex flex-row items-center justify-center h-16">
+            <div
+              className="cursor-pointer hover:bg-blue-100 w-1/2 flex items-center justify-center"
+              onClick={handleIncrement}
+            >
+              <PlusCircleIcon className="h-6 w-6 text-blue-500" />
+            </div>
+            <div
+              className="cursor-pointer hover:bg-blue-100 w-1/2 flex items-center justify-center"
+              onClick={handleDesincrement}
+            >
+              <MinusCircleIcon className="h-6 w-6 text-blue-500" />
+            </div>
           </div>
           <button
             type="submit"
