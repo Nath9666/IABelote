@@ -4,13 +4,32 @@ from function import *
 import json
 import shutil
 import numpy as np
+import os
 
 app = Flask(__name__)
 CORS(app)  # Ajoutez cette ligne pour permettre les requêtes CORS
 
+UPLOAD_FOLDER = './front/public/data'
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
 @app.route('/')
 def home():
     return jsonify("Hello, Flask!")
+
+@app.route('/upload', methods=['POST'])
+def upload_image():
+    if 'image' not in request.files:
+        return jsonify({"error": "No image part"}), 400
+
+    file = request.files['image']
+    if file.filename == '':
+        return jsonify({"error": "No selected file"}), 400
+
+    file_path = os.path.join(UPLOAD_FOLDER, file.filename)
+    file.save(file_path)
+    return jsonify({"message": "Image uploaded successfully", "file_path": file_path}), 200
+
 
 @app.route('/reconize', methods=['POST'])
 def reconize():
