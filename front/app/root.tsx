@@ -28,27 +28,20 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function App() {
-  return <Outlet />;
-}
-
 // Ajouter le composant ErrorBoundary
 export function ErrorBoundary({ error }: { error: Error }) {
   console.error(error);
 
-  return (
-    <Layout>
-      <h1>Erreur</h1>
-      <p>{error}</p>
-    </Layout>
-  );
+  return <NotFound />;
 }
 
 // Ajouter le composant CatchBoundary
 export function CatchBoundary() {
   return (
-    <Layout>
       <NotFound />
-    </Layout>
   );
+}
+
+export default function App() {
+  return <Outlet />;
 }

@@ -4,7 +4,9 @@ const Navbar: React.FC = () => {
   return (
     <nav className="bg-gray-800 p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-white text-lg font-bold">Tournoi de Belote</div>
+        <a href="/" className="text-white text-lg font-bold">
+          Tournoi de Belote
+        </a>
         <div className="flex space-x-4">
           <a href="/partie" className="text-gray-300 hover:text-white">
             Partie
