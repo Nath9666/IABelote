@@ -164,7 +164,9 @@ export default function Partie() {
               onChange={(e) => {
                 const num = Number(e.target.value);
                 setNumber(num);
-                setParticipants(Array(num).fill({ nom: "", prenom: "", score:0}));
+                setParticipants(
+                  Array(num).fill({ nom: "", prenom: "", score: 0 })
+                );
               }}
               className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Entrez le nombre de participants"
