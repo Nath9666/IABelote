@@ -5,6 +5,7 @@ import json
 import shutil
 import numpy as np
 import os
+from datetime import datetime
 
 app = Flask(__name__)
 CORS(app)  # Ajoutez cette ligne pour permettre les requêtes CORS
@@ -14,9 +15,20 @@ UPLOAD_FOLDER = './data'
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
+def save_to_json(data, date_debut, filename_prefix='tournoi_data'):
+    # Formater la date de début pour l'utiliser dans le nom du fichier
+    date_str = datetime.strptime(date_debut, '%Y-%m-%dT%H:%M').strftime('%Y%m%d')
+    filename = f"./data/tournois/{filename_prefix}_{date_str}.json"
+    
+    with open(filename, 'w') as json_file:
+        json.dump(data, json_file, indent=4)
+
 @app.route('/')
 def home():
     return jsonify("Hello, Flask!")
+
+#TODO: faire une route pour avoir les infos du tournoi
+#TODO: faire une route, avoir la partie actuelle
 
 @app.route('/upload', methods=['POST'])
 def upload_image():
@@ -66,6 +78,34 @@ def reconize():
     }
 
     return jsonify(response_data), 200
+
+@app.route('/saveTournoi', methods=['POST'])
+def save_tournoi():
+    data = request.get_json()
+    list_participant = data.get('Listparticipant', [])
+    dateDebut = data.get('dateDebut', '')
+    dateFin = data.get('dateFin', '')
+
+    for participant in list_participant:
+        participant['score'] = 0
+
+    # Logique pour traiter les participants du tournoi
+    print('Participants reçus:', list_participant)
+    print('Date de début:', dateDebut)
+    print('Date de fin:', dateFin)
+
+    # Enregistrer les données dans un fichier JSON
+    save_to_json(data, dateDebut)
+
+    # Simuler une réponse
+    response = {
+        'message': 'Tournoi sauvegardé avec succès',
+        'participants': list_participant,
+        'dateDebut': dateDebut,
+        'dateFin': dateFin
+    }
+
+    return jsonify(response), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
