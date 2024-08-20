@@ -11,7 +11,7 @@ app = Flask(__name__)
 CORS(app)  # Ajoutez cette ligne pour permettre les requêtes CORS
 
 UPLOAD_FOLDER_FRONT = './front/public/data'
-UPLOAD_FOLDER = './data' 
+UPLOAD_FOLDER = './data'
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
@@ -103,6 +103,52 @@ def save_tournoi():
         'participants': list_participant,
         'dateDebut': dateDebut,
         'dateFin': dateFin
+    }
+
+    return jsonify(response), 200
+
+@app.route('/templateValue', methods=['GET'])
+def template_value():
+    # Simuler une réponse
+    general_path = './externe/contours/points/'
+    output = [
+        {
+            "texte": 163,
+            "position_image": (122, 178, 29, 85),
+            "image": "_122_178_29_85.png",
+            "general_probabilities" : 0.44,
+            "chiffres": [
+                {
+                    "x": 122,
+                    "y": 180,
+                    "w": 9,
+                    "h": 7,
+                    "max_probabilities": (1, 0.8654794),
+                    "probabilities": [0.7, 0.8654794, 0.5, 0.00225548, 0.00354571, 0.00219552, 0.02073413, 0.00446359, 0.03090764, 0.00912645]
+                },
+                {
+                    "x": 131,
+                    "y": 180,
+                    "w": 9,
+                    "h": 7,
+                    "max_probabilities": (6, 0.7654794),
+                    "probabilities": [0.6, 0.4, 0.00215548, 0.00344571, 0.00209552, 0.02063413, 0.7654794, 0.00436359, 0.03080764, 0.00902645]
+                },
+                {
+                    "x": 140,
+                    "y": 181,
+                    "w": 9,
+                    "h": 7,
+                    "max_probabilities": (3, 0.6654794),
+                    "probabilities": [0.5, 0.3, 0.00205548, 0.6654794, 0.00334571, 0.00199552, 0.02053413, 0.00426359, 0.03070764, 0.00892645]
+                }
+            ],
+        }
+    ]
+
+    response = {
+        'general_path': general_path,
+        'data': output
     }
 
     return jsonify(response), 200
